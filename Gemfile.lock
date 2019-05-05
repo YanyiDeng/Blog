@@ -297,6 +297,7 @@ DEPENDENCIES
   rails_kindeditor
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
