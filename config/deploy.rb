@@ -21,6 +21,8 @@ set :deploy_to, "/home/dyy/#{fetch(:application)}"
 # Default value for :pty is false
 # set :pty, true
 
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
+
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml"
 
