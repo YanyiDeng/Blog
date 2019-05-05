@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:create]
   def new
     redirect_to posts_path and return unless session[:user_id].nil?
   end
