@@ -21,8 +21,6 @@ set :deploy_to, "/home/dyy/#{fetch(:application)}"
 # Default value for :pty is false
 # set :pty, true
 
-set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
-
 # Default value for :linked_files is []
 #append :linked_files, "config/database.yml"
 append :linked_files, "config/database.yml", "config/master.key"
@@ -42,6 +40,16 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+# Defaults to 'db'
+set :migration_role, :db
+
+# Defaults to false
+# Skip migration if files in db/migrate were not modified
+set :conditionally_migrate, true
+
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
